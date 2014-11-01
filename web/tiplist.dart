@@ -48,7 +48,12 @@ class TipList extends PolymerElement {
   void onDetailLoaded(String responseText) {
     Map parsedJson = JSON.decode(responseText);
     Map announcement = parsedJson["announcement"];
-     
+    
+    if (announcement['photos'].length > 0) {
+      announcement['photo'] = announcement['photos'][0]['urls'][0] + "/w100h100";
+    } else {
+      announcement['photo'] = 'http://beta-www.lepsimisto.cz/Content/images/avatar_small.png';
+    }
     tips.add(announcement);
 //    if (tips.length == 0) {
 //      tips.add(announcement);

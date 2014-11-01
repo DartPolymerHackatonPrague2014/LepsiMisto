@@ -4,33 +4,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sample app</title>
+<title>Polymer Place</title>
 
 <!-- include the web_components polyfills with support for Dart. -->
 <script src="packages/web_components/platform.js"></script>
-<script src="packages/web_components/dart_support.js"></script>
-
-<!-- import the Core and Paper elements -->
-<link rel="import" href="packages/core_elements/core_toolbar.html">
-<link rel="import" href="packages/core_elements/core_header_panel.html">
-<link rel="import" href="packages/core_elements/core_icons.html">
-<link rel="import" href="packages/paper_elements/paper_icon_button.html">
 
 <link rel="import" href="tiplist.html">
 <link rel="stylesheet" href="lepsimisto.css">
 </head>
-<!-- use fullbleed attribute to specify 
-     the body should fill the viewport -->
-<body fullbleed vertical layout unresolved>
-  <core-header-panel flex> 
-    <core-toolbar id="mainheader">
-     <!-- <paper-icon-button id="navicon" icon="arrow-back"></paper-icon-button> -->
-      <span flex>Polymer Place</span>
-    </core-toolbar>
-    <p>first content</p>
-    <p>second content</p>
-    <tip-list latitude="50" longitude="14"></tip-list> 
-  </core-header-panel>
+<body>
+  <tip-list latitude="50" longitude="14"></tip-list> 
   <!-- bootstrap polymer -->
   <script type="application/dart">export 'package:polymer/init.dart';</script>
   <script src="packages/browser/dart.js"></script>

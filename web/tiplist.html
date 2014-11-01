@@ -1,23 +1,127 @@
 <!-- import polymer-element's definition -->
 <link rel="import" href="packages/polymer/polymer.html">
 
+<!-- import the Core and Paper elements -->
+<link rel="import" href="packages/core_elements/core_toolbar.html">
+<link rel="import" href="packages/core_elements/core_header_panel.html">
+<link rel="import" href="packages/core_elements/core_icons.html">
+<link rel="import" href="packages/paper_elements/paper_icon_button.html">
+
 <polymer-element name="tip-list" attributes="latitude longitude">
   <template>
     <style>
-      div.tip {
+      core-header-panel {
+        background: white;
+      }
+      core-toolbar {
+        background-color: #03A9F4;
+      }
+    
+      :host, core-header-panel { height: 100%; }
+      img.photo { width: 100px; height: 100px; } 
+      span.tip {
         border-bottom: 1px #666;
         margin-bottom: 10px;
       }
+      
+      .item {
+        min-height: 1%;
+        height: 90px;
+        padding: 20px 0px 20px 97px;
+        margin: 20px;
+        width: 376px;
+        float: left;
+        clear: both;
+        border-bottom: 1px solid #d9e2ee;
+        position: relative;
+        overflow: hidden;
+      }
+      .item .image {
+width: 80px;
+height: 80px;
+overflow: hidden;
+position: absolute;
+top: 34px;
+left: 0px;
+}
+.item .image img {
+width: 80px;
+height: auto;
+display: block;
+}
+ .item h3 {
+overflow: hidden;
+max-width: 270px;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+ .item h3 {
+font-family: Arial;
+font-weight: bold;
+font-size: 16px;
+display: inline-block;
+color: #272727;
+float: left;
+line-height: 19px;
+}
+.item span.state.new {
+color: #cd20aa;
+}
+ .item span.state {
+margin-left: 10px;
+float: left;
+background: #fff;
+font-family: Arial;
+font-weight: bold;
+font-size: 10px;
+padding: 0px 5px 0px 5px;
+display: inline-block;
+border: 1px solid #d9e2ee;
+border-radius: 4px;
+height: 17px;
+line-height: 19px;
+text-transform: uppercase;
+}
+.item span.adress {
+clear: both;
+display: block;
+font-size: 12px;
+font-family: Arial;
+color: #6b86a6;
+padding-top: 5px;
+}
+.item p {
+clear: both;
+font-family: Arial;
+margin-top: 15px;
+font-size: 13px;
+color: #555555;
+line-height: 18px;
+width: 376px;
+}
     </style>
+   <core-header-panel flex> 
+    <core-toolbar id="mainheader">
+     <!-- <paper-icon-button id="navicon" icon="arrow-back"></paper-icon-button> -->
+      <span flex>Polymer Place</span>
+    </core-toolbar>
     <template repeat="{{tip in tips}}">
-    <p>
-      <span>{{tip['title']}}</span>
-      <span>{{tip['address']}}</span>
-       <span>{{tip['location']['lat']}}, {{tip['location']['lon']}}</span>
-      <span>{{tip['created']}}</span>
-      </p>
+
+      
+      <div class="item">
+        <div class="image">
+            <img alt="{{tip['title']}}" src="{{tip['photo']}}">
+        </div>
+        <h3>{{tip['title']}}</h3>
+<!--         <span class="state new">Nový</span> -->
+        <span class="adress">{{tip['address']}}</span>
+        <p>{{tip['description']}}</p>
+      </div>
+      
+      
+      
     </template>
+  </core-header-panel>
   </template>
   <script type="application/dart" src="tiplist.dart"></script>
 </polymer-element>
-
