@@ -23,11 +23,11 @@ tips(HttpRequest req) {
   client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement?page=1&page_size=500&lat=50&lon=14&announcement_kind=3"))
   .then((clientReq) => clientReq.close())
   .then((HttpClientResponse response) {
+    req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
+    req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
     response.transform(UTF8.decoder).listen((contents) {
-      req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
-      req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
       req.response..write(contents.toString())..close();
-    });
+    }, onDone: () => req.response.close());
   });
 }
 
@@ -37,11 +37,11 @@ tipDetail(HttpRequest req) {
   client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement/${tipId}"))
   .then((clientReq) => clientReq.close())
   .then((HttpClientResponse response) {
-    response.transform(UTF8.decoder).listen((contents) {
-      req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
-      req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
-      req.response..write(contents.toString())..close();
-    });
+    req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
+    req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
+    response.transform(UTF8.decoder).listen((contents) {  
+      req.response..write(contents.toString());
+    }, onDone: () => req.response.close());
   });
 }
 
