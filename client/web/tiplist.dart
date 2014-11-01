@@ -9,8 +9,8 @@ import 'package:intl/intl.dart';
  */
 @CustomTag('tip-list')
 class TipList extends PolymerElement {
-  @published num latitude = 50;
-  @published num longitude = 14;
+  @published num latitude = 50.0868567;
+  @published num longitude = 14.4631003;
   @observable List<Map> tips = toObservable([]);
 
   TipList.created() : super.created() {
@@ -64,7 +64,7 @@ class TipList extends PolymerElement {
     //var url = "json/tips.json";
     
     // Use proxy
-    var url = "http://localhost:8081" + "/tips";
+    var url = "http://localhost:8081" + "/tips?latitude=" + latitude.toString() + "&longitude=" + longitude.toString();
     
     return url;
   }
