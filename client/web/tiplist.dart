@@ -17,12 +17,9 @@ class TipList extends PolymerElement {
     loadTips();
   }
 
-  void loadTips() {
-    //var url = "http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=" + latitude.toString() + "&lon=" + longitude.toString() + "&announcement_kind=3";
-    var url = "json/tips.json";
-    
+  void loadTips() {    
     // call the web server asynchronously
-    var request = HttpRequest.getString(url).then(onTipListLoaded);
+    var request = HttpRequest.getString(getListUrl()).then(onTipListLoaded);
   }
   
   void onTipListLoaded(String responseText) {
@@ -34,11 +31,8 @@ class TipList extends PolymerElement {
   }
   
   void loadTipDetail(int id) {
-    //var url = "http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=" + latitude.toString() + "&lon=" + longitude.toString() + "&announcement_kind=3";
-    var url = "json/tip-" + id.toString() + ".json";
-    
     // call the web server asynchronously
-    var request = HttpRequest.getString(url).then(onDetailLoaded);
+    var request = HttpRequest.getString(getDetailUrl(id)).then(onDetailLoaded);
   }
  
   void onDetailLoaded(String responseText) {
@@ -65,6 +59,32 @@ class TipList extends PolymerElement {
 //        }
 //      }
 //    }
+  }
+  
+  String getListUrl() {
+    // We can't at the moment, due to some-origin-policy. Server does not support CORS.
+    //var url = "http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=" + latitude.toString() + "&lon=" + longitude.toString() + "&announcement_kind=3";
+    
+    // Use local demo data
+    //var url = "json/tips.json";
+    
+    // Use proxy
+    var url = "http://localhost:8081" + "/tips";
+    
+    return url;
+  }
+  
+  String getDetailUrl(int id) {
+     // We can't at the moment, due to some-origin-policy. Server does not support CORS.
+     //var url = "http://beta-api.lepsimisto.cz/v1/announcement/" + id.toString();
+     
+     // Use local demo data
+     //var url = "json/tip-" + id.toString() + ".json";
+     
+     // Use proxy
+     var url = "http://localhost:8081" + "/tips/" + id.toString();
+     
+     return url;
   }
   
   // Sets tip photo or default, is tip does not have any
