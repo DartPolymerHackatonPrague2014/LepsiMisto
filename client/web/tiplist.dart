@@ -61,7 +61,7 @@ class TipList extends PolymerElement {
     //var url = "http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=" + latitude.toString() + "&lon=" + longitude.toString() + "&announcement_kind=3";
     
     // Use local demo data
-    var url = "json/tips.json";
+    var url = "json/tips-prod.json";
     
     // Use proxy
     //var url = "http://localhost:8081" + "/tips/" + latitude.toString() + "/" + longitude.toString();
