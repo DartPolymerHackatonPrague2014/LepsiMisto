@@ -40,8 +40,19 @@ class TipList extends PolymerElement {
   }
  
   void onDetailLoaded(String responseText) {
-     Map parsedJson = JSON.decode(responseText);
-     Map announcement = parsedJson["announcement"];
-     tips.add(announcement);
-   }
+    Map parsedJson = JSON.decode(responseText);
+    Map announcement = parsedJson["announcement"];
+     
+    tips.add(announcement);
+//    if (tips.length == 0) {
+//      tips.add(announcement);
+//    } else {
+//      for (var i = 0; i < tips.length; i++) {
+//        if (tips[i]['created'] > announcement['created']) {
+//          tips.insert(i, announcement);
+//          break;
+//        }
+//      }
+//    }
+  }
 }
