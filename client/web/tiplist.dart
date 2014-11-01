@@ -48,17 +48,12 @@ class TipList extends PolymerElement {
     // Format datetime to human readable format
     announcement['created_formatted'] = formatDate(announcement['created']);
  
+    insertNewAnnouncement(announcement);
+  }
+  
+  void insertNewAnnouncement(Map announcement) {
     tips.add(announcement);
-//    if (tips.length == 0) {
-//      tips.add(announcement);
-//    } else {
-//      for (var i = 0; i < tips.length; i++) {
-//        if (tips[i]['created'] > announcement['created']) {
-//          tips.insert(i, announcement);
-//          break;
-//        }
-//      }
-//    }
+    tips.sort((Map a, Map b) => -a['created'].compareTo(b['created']));
   }
   
   String getListUrl() {
