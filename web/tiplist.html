@@ -10,12 +10,12 @@
       }
     </style>
     <template repeat="{{tip in tips}}">
-    <div class="tip">
-      <div>{{tip['title']}}</div>
-      <div>{{tip['address']}}</div>
-      <div>{{tip['location']['lat']}}, {{tip['location']['lon']}}</div>
-      <div>{{tip['created']}}</div>
-    </div>
+    <p>
+      <span>{{tip['title']}}</span>
+      <span>{{tip['address']}}</span>
+       <span>{{tip['location']['lat']}}, {{tip['location']['lon']}}</span>
+      <span>{{tip['created']}}</span>
+      </p>
     </template>
   </template>
   <script type="application/dart" src="tiplist.dart"></script>
