@@ -20,7 +20,7 @@ void main() {
 
 tips(HttpRequest req) {
   var client = new HttpClient();
-  client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=50&lon=14&announcement_kind=3"))
+  client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement?page=1&page_size=500&lat=50&lon=14&announcement_kind=3"))
   .then((clientReq) => clientReq.close())
   .then((HttpClientResponse response) {
     response.transform(UTF8.decoder).listen((contents) {
