@@ -5,7 +5,6 @@
 <link rel="import" href="packages/core_elements/core_toolbar.html">
 <link rel="import" href="packages/core_elements/core_header_panel.html">
 <link rel="import" href="packages/core_elements/core_icons.html">
-<link rel="import" href="packages/paper_elements/paper_icon_button.html">
 <link rel="import" href="packages/paper_elements/paper_shadow.html">
 
 <polymer-element name="tip-list" attributes="latitude longitude">
@@ -86,6 +85,14 @@
         color: #6b86a6;
         padding-top: 5px;
       }
+      .item span.created {
+        clear: both;
+        display: block;
+        float: left;
+        font-size: 12px;
+        color: #6b86a6;
+        padding-top: 5px;
+      }
       .item p {
         clear: both;
         margin-top: 15px;
@@ -106,6 +113,7 @@
             <img alt="{{tip['title']}}" _src="{{tip['photo']}}">
         </div>
         <h3><a _href="{{tip['url']}}">{{tip['title']}}</a></h3>
+        <span class="created">{{tip['created_formatted']}}</span>
         <span class="adress">{{tip['address']}}</span>
         <p>{{tip['description']}}</p>
         <paper-shadow z="1"></paper-shadow>
