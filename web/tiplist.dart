@@ -49,11 +49,16 @@ class TipList extends PolymerElement {
     Map parsedJson = JSON.decode(responseText);
     Map announcement = parsedJson["announcement"];
     
+    // Set default photo
     if (announcement['photos'].length > 0) {
       announcement['photo'] = announcement['photos'][0]['urls'][0] + "/w100h100";
     } else {
       announcement['photo'] = 'http://beta-www.lepsimisto.cz/Content/images/avatar_small.png';
     }
+    
+    // correct url - we want to run against beta
+    announcement['url'] = announcement['url'].toString().replaceFirst("http://www-lepsimisto-cz.azurewebsites.net", "http://beta-www.lepsimisto.cz");
+    
     tips.add(announcement);
 //    if (tips.length == 0) {
 //      tips.add(announcement);
