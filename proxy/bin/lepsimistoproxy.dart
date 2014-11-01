@@ -5,7 +5,7 @@ import 'package:route/url_pattern.dart';
 
 const port = 8081;
 
-final tipsPattern = new UrlPattern(r'/tips/@(\d+)/(\d+)\/?');
+final tipsPattern = new UrlPattern(r'/tips/@(\d+\.\d+)/(\d+\.\d+)\/?');
 final tipPattern = new UrlPattern(r'/tips/(\d+)\/?');
 final client = new HttpClient();
 
