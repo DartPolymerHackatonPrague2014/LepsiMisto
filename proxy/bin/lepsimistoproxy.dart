@@ -7,6 +7,7 @@ const port = 8081;
 
 final tipsPattern = new UrlPattern(r'/tips/@(\d+)/(\d+)\/?');
 final tipPattern = new UrlPattern(r'/tips/(\d+)\/?');
+final client = new HttpClient();
 
 void main() {
   HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, port).then((server) {
@@ -22,30 +23,30 @@ tips(HttpRequest req) {
   var path = tipsPattern.parse(req.uri.path);
   var latitude = path[0];
   var longitude = path[1];
-  var client = new HttpClient();
+  //var client = new HttpClient();
   client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement?page=1&page_size=5&lat=${latitude}&lon=${longitude}&announcement_kind=3"))
   .then((clientReq) => clientReq.close())
   .then((HttpClientResponse response) {
     req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
     req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
     response.transform(UTF8.decoder).listen((contents) {
-      req.response..write(contents)..close();
-    });
+      req.response..write(contents);
+    }).onDone(req.response.close);
   });
 }
 
 tipDetail(HttpRequest req) {
   var path = tipPattern.parse(req.uri.path);
   var tipId = path[0];
-  var client = new HttpClient();
+  // var client = new HttpClient();
   client.getUrl(Uri.parse("http://beta-api.lepsimisto.cz/v1/announcement/${tipId}"))
   .then((clientReq) => clientReq.close())
   .then((HttpClientResponse response) {
     req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
     req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
     response.transform(UTF8.decoder).listen((contents) {  
-      req.response..write(contents)..close();
-    });
+      req.response..write(contents);
+    }).onDone(req.response.close);
   });
 }
 
