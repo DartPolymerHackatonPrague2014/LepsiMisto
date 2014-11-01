@@ -1,0 +1,22 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="packages/polymer/polymer.html">
+
+<polymer-element name="tip-list" attributes="latitude longitude">
+  <template>
+    <style>
+      div.tip {
+        border-bottom: 1px #666;
+        margin-bottom: 10px;
+      }
+    </style>
+    <template repeat="{{tip in tips}}">
+    <div class="tip">
+      <div>{{tip['title']}}</div>
+      <div>{{tip['address']}}</div>
+      <div>{{tip['location']['lat']}}, {{tip['location']['lon']}}</div>
+    </div>
+    </template>
+  </template>
+  <script type="application/dart" src="tiplist.dart"></script>
+</polymer-element>
+
