@@ -61,10 +61,10 @@ class TipList extends PolymerElement {
     //var url = "http://beta-api.lepsimisto.cz/v1/announcement?page=1&lat=" + latitude.toString() + "&lon=" + longitude.toString() + "&announcement_kind=3";
     
     // Use local demo data
-    //var url = "json/tips.json";
+    var url = "json/tips.json";
     
     // Use proxy
-    var url = "http://localhost:8081" + "/tips?latitude=" + latitude.toString() + "&longitude=" + longitude.toString();
+    //var url = "http://localhost:8081" + "/tips/" + latitude.toString() + "/" + longitude.toString();
     
     return url;
   }
@@ -74,10 +74,10 @@ class TipList extends PolymerElement {
      //var url = "http://beta-api.lepsimisto.cz/v1/announcement/" + id.toString();
      
      // Use local demo data
-     //var url = "json/tip-" + id.toString() + ".json";
+     var url = "json/tip-" + id.toString() + ".json";
      
      // Use proxy
-     var url = "http://localhost:8081" + "/tips/" + id.toString();
+     //var url = "http://localhost:8081" + "/tips/" + id.toString();
      
      return url;
   }
