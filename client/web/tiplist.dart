@@ -59,6 +59,7 @@ class TipList extends PolymerElement {
     // correct url - we want to run against beta
     announcement['url'] = announcement['url'].toString().replaceFirst("http://www-lepsimisto-cz.azurewebsites.net", "http://beta-www.lepsimisto.cz");
     
+    
     tips.add(announcement);
 //    if (tips.length == 0) {
 //      tips.add(announcement);

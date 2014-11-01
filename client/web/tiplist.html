@@ -6,6 +6,7 @@
 <link rel="import" href="packages/core_elements/core_header_panel.html">
 <link rel="import" href="packages/core_elements/core_icons.html">
 <link rel="import" href="packages/paper_elements/paper_icon_button.html">
+<link rel="import" href="packages/paper_elements/paper_shadow.html">
 
 <polymer-element name="tip-list" attributes="latitude longitude">
   <template>
@@ -25,25 +26,19 @@
       }
       
       .item {
-        min-height: 1%;
-        height: 90px;
-        padding: 20px 0px 20px 97px;
+        padding: 10px 0px 10px 107px;
         margin: 20px;
         width: 376px;
-        float: left;
-        clear: both;
-        border-bottom: 1px solid #d9e2ee;
         position: relative;
         overflow: hidden;
-        font-family: Arial;
       }
       .item .image {
         width: 80px;
         height: 80px;
         overflow: hidden;
         position: absolute;
-        top: 34px;
-        left: 0px;
+        top: 20px;
+        left: 10px;
       }
       .item .image img {
         width: 80px;
@@ -51,6 +46,7 @@
         display: block;
       }
       .item h3 {
+        margin: 10px 0 0 0;
         overflow: hidden;
         max-width: 270px;
         white-space: nowrap;
@@ -112,6 +108,7 @@
         <h3><a _href="{{tip['url']}}">{{tip['title']}}</a></h3>
         <span class="adress">{{tip['address']}}</span>
         <p>{{tip['description']}}</p>
+        <paper-shadow z="1"></paper-shadow>
       </div>
     </template>
   </core-header-panel>
