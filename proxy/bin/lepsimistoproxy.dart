@@ -25,6 +25,7 @@ tips(HttpRequest req) {
   .then((HttpClientResponse response) {
     response.transform(UTF8.decoder).listen((contents) {
       req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
       req.response..write(contents.toString())..close();
     });
   });
@@ -38,6 +39,7 @@ tipDetail(HttpRequest req) {
   .then((HttpClientResponse response) {
     response.transform(UTF8.decoder).listen((contents) {
       req.response.headers.contentType = new ContentType("application", "json", charset: "utf-8");
+      req.response.headers.add("Access-Control-Allow-Origin", "*"); // support CORS
       req.response..write(contents.toString())..close();
     });
   });
